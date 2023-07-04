@@ -4,17 +4,16 @@
 #include <stdlib.h>
 
 uint32_t read_file(char* filename){
-	uint32_t number;
-	FILE* file = fopen(filename,"rb");
+	uint32_t number = 0;
 
+	FILE* file = fopen(filename,"rb");
 	if (file == NULL) {
         	printf("Failed to open the file: %s\n", filename);
 		exit(1);
     	}
 
-	fread(&number, sizeof(uint32_t), 1, file);
+	fread(&number,sizeof(uint32_t), 1, file);
 	fclose(file);
-
 	number = ntohl(number);
 	
 	return number;
