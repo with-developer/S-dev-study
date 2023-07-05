@@ -1,0 +1,10 @@
+﻿  Pointer_exchange.cpp
+C:\Users\user\Desktop\project\S-dev-study\C_programming\0705\Pointer_exchange\Pointer_exchange\Pointer_exchange.cpp(18,12): warning C4477: 'printf' : 서식 문자열 '%#x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+C:\Users\user\Desktop\project\S-dev-study\C_programming\0705\Pointer_exchange\Pointer_exchange\Pointer_exchange.cpp(18,12): warning C4313: 'printf': 서식 문자열의 '%x'이(가) int *' 형식의 인수 1과(와) 충돌합니다.
+C:\Users\user\Desktop\project\S-dev-study\C_programming\0705\Pointer_exchange\Pointer_exchange\Pointer_exchange.cpp(18,12): warning C4477: 'printf' : 서식 문자열 '%#x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 2의 형식이 'int *'입니다.
+C:\Users\user\Desktop\project\S-dev-study\C_programming\0705\Pointer_exchange\Pointer_exchange\Pointer_exchange.cpp(18,12): warning C4313: 'printf': 서식 문자열의 '%x'이(가) int *' 형식의 인수 2과(와) 충돌합니다.
+C:\Users\user\Desktop\project\S-dev-study\C_programming\0705\Pointer_exchange\Pointer_exchange\Pointer_exchange.cpp(25,12): warning C4477: 'printf' : 서식 문자열 '%#x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+C:\Users\user\Desktop\project\S-dev-study\C_programming\0705\Pointer_exchange\Pointer_exchange\Pointer_exchange.cpp(25,12): warning C4313: 'printf': 서식 문자열의 '%x'이(가) int *' 형식의 인수 1과(와) 충돌합니다.
+C:\Users\user\Desktop\project\S-dev-study\C_programming\0705\Pointer_exchange\Pointer_exchange\Pointer_exchange.cpp(25,12): warning C4477: 'printf' : 서식 문자열 '%#x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 2의 형식이 'int *'입니다.
+C:\Users\user\Desktop\project\S-dev-study\C_programming\0705\Pointer_exchange\Pointer_exchange\Pointer_exchange.cpp(25,12): warning C4313: 'printf': 서식 문자열의 '%x'이(가) int *' 형식의 인수 2과(와) 충돌합니다.
+  Pointer_exchange.vcxproj -> C:\Users\user\Desktop\project\S-dev-study\C_programming\0705\Pointer_exchange\x64\Debug\Pointer_exchange.exe
