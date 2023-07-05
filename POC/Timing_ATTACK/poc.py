@@ -1,47 +1,17 @@
-
-#python3
-
-import socket
 import time
+import subprocess
 
-def getFlag():
- TCP_IP= '192.168.0.14'  #ip of challenge01.root-me.org
- TCP_PORT= 3333
- BUFFER_SIZE=1024
- 
- print("[+]- Connecting To %s:%d\n", TCP_IP, TCP_PORT)
- s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+def measure_nc_execution_time(input_data):
+    start_time = time.time()
+    # nc 명령어 실행 및 표준 입력으로 데이터 전송
+    process = subprocess.Popen(['nc', 'host', 'port'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output, error = process.communicate(input=input_data.encode())
+    end_time = time.time()
+    
+    execution_time = end_time - start_time
+    print(f"Execution time: {execution_time} seconds")
+    print(f"Output:\n{output.decode()}")
 
- s.connect((TCP_IP, TCP_PORT))
- data = s.recv(BUFFER_SIZE)
- 
- print(data)
- 
- 
-chars="abcdefghijklmnopqrstuvwxyz"
-time_char=0
-char_found=''
-key=''
- 
-for i in range(26):
-  for c in chars:
-   s.send(key+c)
-   debut=time.time()
-   data = s.recv(BUFFER_SIZE)
-   fin=time.time()
-   diff=fin-debut
-   if(diff>time_char):
-     time_char=diff
-     char_found=c
-  key+=char_found
-  time_char=0
-  print("[+] - key : ",key,"*",*(11-i))
-  s.close()
- return key
-
-def main():
- print("[+] - Flag is : %s\n",getFlag())
-
-if __name__ == '__main__':
-   main()
-
+# 입력 데이터
+input_data = "Hello, NC!"
+measure_nc_execution_time(input_data)
