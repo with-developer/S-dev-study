@@ -2,7 +2,7 @@ import socket
 import time
 
 def exploit():
-    TCP_IP = '192.168.0.14'  # 서버 IP (실제 IP로 변경)
+    TCP_IP = '192.168.0.5'  # 서버 IP (실제 IP로 변경)
     TCP_PORT = 3333
 
     print("[+] Connecting to %s:%d" % (TCP_IP, TCP_PORT))

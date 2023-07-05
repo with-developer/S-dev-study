@@ -1,7 +1,7 @@
 import time
 from socket import *
 
-IP = "192.168.0.14"
+IP = "192.168.0.5"
 PORT = 3333
 
 FoundedPasswd = ''

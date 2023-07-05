@@ -2,7 +2,7 @@ import socket
 import time
 
 def getFlag():
-    TCP_IP = '192.168.0.14'  # ip of challenge01.root-me.org
+    TCP_IP = '192.168.0.5'  # ip of challenge01.root-me.org
     TCP_PORT = 3333
     BUFFER_SIZE = 1024
 

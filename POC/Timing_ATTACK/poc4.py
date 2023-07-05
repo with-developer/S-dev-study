@@ -3,7 +3,7 @@ import socket
 import time
 
 def getFlag():
-    TCP_IP = '192.168.0.14'  # 서버 IP (challenge01.root-me.org에 맞게 변경)
+    TCP_IP = '192.168.0.5'  # 서버 IP (challenge01.root-me.org에 맞게 변경)
     TCP_PORT = 3333
     BUFFER_SIZE = 1024
 
