@@ -70,7 +70,7 @@ int main()
 		printf("%d data\ndate: %s\nusername: %s\npassword: %s\nresult: %s\n\n", i, log[i].date, log[i].id, log[i].pw, log[i].result);
 	}
 	fclose(pFile);
-
+	
 	return 0;
 
 }
