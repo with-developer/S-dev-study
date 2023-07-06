@@ -20,6 +20,7 @@ void custom_strcpy(char message[100]) {
 int main()
 {
     char message[100] = "";
+    printf("input message >>");
     scanf("%s", message);
 
     printf("original value: %s\n", message);
