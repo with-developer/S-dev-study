@@ -32,7 +32,7 @@ int main()
     }
 
     if (ReadFile(hfile, buff, sizeof(buff) - 1, &rbytes, NULL)) {
-        //buff[rbytes] = '\0';  // Null-terminate the buffer
+        buff[rbytes] = '\0';  // Null-terminate the buffer
         printf("buff: %s\n", buff);
     }
     else {
@@ -48,5 +48,6 @@ int main()
 
 
     CloseHandle(hfile);
+    CloseHandle(hfile2);
     return 0;
 }
