@@ -4,28 +4,27 @@
 #include <stdlib.h>
 #include <string.h>
 
-void custom_strcpy(char message[100]) {
-    char result[100] = "";
-    
-    for (int i = 0; i < strlen(message); i++) {
-        result[i] = message[i];
+
+char* custom_strcpy(char* strDestination, const char* strSource) {
+    int i = 0;
+    while (strSource[i] != '\0') {
+        strDestination[i] = strSource[i];
+        i++;
     }
+    strDestination[i] = '\0';
 
-    printf("result value: %s\n", result);
-    printf("result address: %#x\n", &result);
-
-    return;
+    return strDestination;
 }
+
 
 int main()
 {
-    char message[100] = "";
+    char origin[100];
+    char new_string[100];
     printf("input message >>");
-    scanf("%s", message);
+    scanf("%99s", origin);
 
-    printf("original value: %s\n", message);
-    printf("original address: %#x\n\n", &message);
-
-    custom_strcpy(message);
+    printf("original value: %s\n", origin);
+    custom_strcpy(new_string, origin);
+    printf("new_string: %s\n", new_string);
 }
-
