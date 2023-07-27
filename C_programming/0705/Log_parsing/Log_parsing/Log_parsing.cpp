@@ -11,6 +11,7 @@ typedef struct logdata {
     char pw[20];
     char result[20];
 } logdata;
+
 int log_count = 0;
 
 void usage() {
@@ -18,7 +19,7 @@ void usage() {
     printf("sample : log_database.exe log.txt\n");
 }
 
-struct logdata read_log(const char* filename) {
+struct logdata* read_log(const char* filename) {
     char logfile_line[255];
 
     FILE* pFile = fopen(filename, "r");
@@ -28,14 +29,13 @@ struct logdata read_log(const char* filename) {
         exit(-1);
     }
 
-    // 라인 수 세기
     while (fgets(logfile_line, sizeof(logfile_line), pFile))
     {
         log_count++;
     }
-    rewind(pFile);    // 파일 포인터를 다시 시작으로 이동
+    rewind(pFile);
 
-    logdata* log = (logdata*)calloc(log_count, sizeof(logdata));    // 동적 메모리 할당
+    logdata* log = (logdata*)calloc(log_count, sizeof(logdata));
     if (!log)
     {
         printf("Memory allocation failed!\n");
@@ -63,6 +63,10 @@ struct logdata read_log(const char* filename) {
                 strcat(log[rowIndex].pw, slice_ptr);
             }
             else if (index_num == 4) {
+                size_t len = strlen(slice_ptr);
+                if (len > 0 && slice_ptr[len - 1] == '\n') {
+                    slice_ptr[len - 1] = '\0';
+                }
                 strcat(log[rowIndex].result, slice_ptr);
             }
             slice_ptr = strtok(NULL, " ");
@@ -71,35 +75,89 @@ struct logdata read_log(const char* filename) {
         rowIndex++;
     }
 
-    for (int i = 0; i < log_count; i++) {
-        printf("%d data\ndate: %s\nusername: %s\npassword: %s\nresult: %s\n\n", i, log[i].date, log[i].id, log[i].pw, log[i].result);
-    }
-
     fclose(pFile);
-    free(log);    // 동적으로 할당된 메모리 해제
-    return *log;
+    printf("로그파일을 성공적으로 읽었습니다!\n");
+    return log;
 }
 
-void show_database(struct logdata log) {
+void show_database(struct logdata* log) {
     for (int i = 0; i < log_count; i++) {
         printf("%d data\ndate: %s\nusername: %s\npassword: %s\nresult: %s\n\n", i, log[i].date, log[i].id, log[i].pw, log[i].result);
     }
 }
 
+void find_user(char username[20], struct logdata* log) {
+    int count = 0;
+    for (int i = 0; i < log_count; i++) {
+        if (strcmp(log[i].id,username) == 0) {
+            count++;
+            printf("%d data\ndate: %s\nusername: %s\npassword: %s\nresult: %s\n\n", i, log[i].date, log[i].id, log[i].pw, log[i].result);
+        }
+    }
+    printf("find %d column\n", count);
+}
 
-int main(int argc, char* argv[]){
+void find_result(char result[20], struct logdata* log) {
+    printf("%s\n", result);
+    int count = 0;
+    for (int i = 0; i < log_count; i++) {
+        if (strcmp(log[i].result, result) == 0) {
+            count++;
+            printf("%d data\ndate: %s\nusername: %s\npassword: %s\nresult: %s\n\n", i, log[i].date, log[i].id, log[i].pw, log[i].result);
+        }
+    }
+    printf("find %d column\n", count);
+}
+
+
+int main(int argc, char* argv[]) {
     //if (argc != 2) {
-     //   usage();
-      //  return -1;
+        //usage();
+        //return -1;
     //}
+    //const char* test = argv[1];
     const char* test = "log.txt";
 
-    struct logdata log;
+    struct logdata* log;
     log = read_log(test);
 
-    show_database(log);
 
-    
+    while (true) {
+        int menu = 0;
+        int sub_menu = 0;
+        printf("\n메뉴를 선택해주세요.\n1. 전체 로그 출력\n2. 로그 검색\n>> ");
+        scanf_s("%d", &menu);
+        if (menu == 1) {
+            printf("전체 로그를 출력하겠습니다.\n");
+            show_database(log);
+        }
+        else if (menu == 2) {
+            printf("컬럼을 선택하세요.\n1.계정명\n2.성공/실패 유무\n>> ");
+            scanf_s("%d", &sub_menu);
+            if (sub_menu == 1) {
+                printf("계정명을 입력하세요\n>> ");
+                char username[20] = "";
+                scanf("%s", username);
+                find_user(username, log);
+            }
+            else if (sub_menu == 2) {
+                printf("성공/실패 유무를 입력하세요. (SUCCESS/ERROR)\n>> ");
+                char result[20] = "";
+                scanf("%s", result);
+                find_result(result, log);
+            }
+            else {
+                printf("올바른 값을 입력해주세요.\n");
+            }
+        }
+        else {
+            printf("올바른 값을 입력해주세요.\n");
+        }
+    }
 
+
+    free(log);
     return 0;
 }
+
+
