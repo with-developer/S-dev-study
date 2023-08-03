@@ -1,0 +1,7 @@
+﻿  chall1.c
+C:\Users\user\Desktop\project\S-dev-study\C_programming\chall1\chall1.c(25,18): warning C4013: 'open'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\user\Desktop\project\S-dev-study\C_programming\chall1\chall1.c(32,17): warning C4013: 'read'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\user\Desktop\project\S-dev-study\C_programming\chall1\chall1.c(35,9): warning C4013: 'close'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\user\Desktop\project\S-dev-study\C_programming\chall1\chall1.c(43,10): warning C4013: 'strncmp'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\user\Desktop\project\S-dev-study\C_programming\chall1\chall1.c(46,9): warning C4013: 'system'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  chall1.vcxproj -> C:\Users\user\Desktop\project\S-dev-study\C_programming\chall1\x64\Debug\chall1.exe
