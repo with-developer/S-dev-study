@@ -15,7 +15,7 @@ class PacketHeader:
         offset += 4
         self.orig_len = struct.unpack("<L", data[offset : offset + 4])[0]
         ts = str(self.ts_sec) + "." + str(self.ts_usec)
-        print(datetime.fromtimestamp(float(ts)), self.incl_len, self.orig_len)
+        #print(datetime.fromtimestamp(float(ts)), self.incl_len, self.orig_len)
 
 class Ethernet:
     
@@ -63,7 +63,7 @@ class IP:
         self.dip = socket.inet_ntoa(data[16:20])
         self.ttl = struct.unpack("<B", data[8:9])[0]
         self.proto_type = struct.unpack("<B", data[9:10])[0]
-        print(self.sip, gi.record_by_addr(self.sip), self.dip, gi.record_by_addr(self.dip), self.ttl)
+        #print(self.sip, gi.record_by_addr(self.sip), self.dip, gi.record_by_addr(self.dip), self.ttl)
         '''
         if not (self.sip.startswith("192.168.0.") or self.dip.startswith("192.168.0.")):
             print(self.sip, self.dip)
@@ -72,7 +72,7 @@ class IP:
             pass
             #input()
         if self.proto_type == 6:
-            print(int(self.headr_length, 2) * 4)
+            #print(int(self.headr_length, 2) * 4)
             tcp_data = TCP(data[int(self.headr_length, 2) * 4:])
         
         #if self.sip == self.dip:
@@ -90,6 +90,7 @@ class TCP:
         self.flags = bin(int(struct.unpack("<B", data[13:14])[0])).replace("0b", "")
         
         self.flags = "0" * (6 - len(self.flags)) + self.flags
+        '''
         if self.flags[0] == "1":
             print("urgent")
             
@@ -103,9 +104,15 @@ class TCP:
             print("syn")
         if self.flags[5] == "1":
             print("fin")
-        
-        print(self.sport, self.dport, self.seq_number, self.acq_number, self.header_length)
+        '''
+        #print(self.sport, self.dport, self.seq_number, self.acq_number, self.header_length)
         tcp_payload = data[self.header_length:]
+        if len(tcp_payload) > 0 and (self.sport == 80 or self.dport == 80):
+            if self.sport == 44542 or self.dport == 44542:
+                fd = open("a.txt", "a")
+                fd.write(tcp_payload.decode("utf-8"))
+                fd.close()
+        '''
         if len(tcp_payload) > 0 and (self.sport == 80 or self.dport == 80):
             print(tcp_payload, len(tcp_payload))
             try:
@@ -113,10 +120,11 @@ class TCP:
                 if tcp_payload.startswith("GET ") or tcp_payload.startswith("POST "):
                     if tcp_payload.endswith("\r\n\r\n"):
                         print(tcp_payload) 
+                        input()
                         
             except:
                 pass    
-        
+        '''
     
 fd = open("2.pcap", "rb")
 data = fd.read()
@@ -137,6 +145,3 @@ while True:
     if offset >= len(data):
         break
         
-    
-
-
