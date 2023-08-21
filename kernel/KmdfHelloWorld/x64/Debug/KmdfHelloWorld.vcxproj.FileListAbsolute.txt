@@ -1,0 +1,1 @@
+C:\Users\user\Desktop\project\S-dev-study\kernel\KmdfHelloWorld\x64\Debug\KmdfHelloWorld.sys

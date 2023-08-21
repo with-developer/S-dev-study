@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KmdfHelloWorld", "KmdfHelloWorld.vcxproj", "{B0E261BF-F8AC-4EE3-AC20-6FFFE72A31B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0E261BF-F8AC-4EE3-AC20-6FFFE72A31B5}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{B0E261BF-F8AC-4EE3-AC20-6FFFE72A31B5}.Debug|ARM64.Build.0 = Debug|ARM64
+		{B0E261BF-F8AC-4EE3-AC20-6FFFE72A31B5}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{B0E261BF-F8AC-4EE3-AC20-6FFFE72A31B5}.Debug|x64.ActiveCfg = Debug|x64
+		{B0E261BF-F8AC-4EE3-AC20-6FFFE72A31B5}.Debug|x64.Build.0 = Debug|x64
+		{B0E261BF-F8AC-4EE3-AC20-6FFFE72A31B5}.Debug|x64.Deploy.0 = Debug|x64
+		{B0E261BF-F8AC-4EE3-AC20-6FFFE72A31B5}.Release|ARM64.ActiveCfg = Release|ARM64
+		{B0E261BF-F8AC-4EE3-AC20-6FFFE72A31B5}.Release|ARM64.Build.0 = Release|ARM64
+		{B0E261BF-F8AC-4EE3-AC20-6FFFE72A31B5}.Release|ARM64.Deploy.0 = Release|ARM64
+		{B0E261BF-F8AC-4EE3-AC20-6FFFE72A31B5}.Release|x64.ActiveCfg = Release|x64
+		{B0E261BF-F8AC-4EE3-AC20-6FFFE72A31B5}.Release|x64.Build.0 = Release|x64
+		{B0E261BF-F8AC-4EE3-AC20-6FFFE72A31B5}.Release|x64.Deploy.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {41FA29BF-2AC0-4299-9907-DB0522190DFE}
+	EndGlobalSection
+EndGlobal
