@@ -1,0 +1,51 @@
+﻿// Polygon.idl: Polygon의 IDL 소스
+//
+
+// 이 파일은 MIDL 도구에 의해 처리되어
+// 형식 라이브러리(Polygon.tlb) 및 마샬링 코드를 생성합니다.
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(5b1ed8ae-4db2-4979-9383-6a2bf97d4741),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IATLControl : IDispatch
+{
+	[propput, bindable, requestedit, id(DISPID_FILLCOLOR)]
+	HRESULT FillColor([in]OLE_COLOR clr);
+	[propget, bindable, requestedit, id(DISPID_FILLCOLOR)]
+	HRESULT FillColor([out, retval]OLE_COLOR* pclr);
+};
+
+[
+	uuid(71f7c75f-9a11-4ac2-9e1d-e691ffc4a3d3),
+	version(1.0),
+]
+library PolygonLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(45660055-3347-4181-9273-92753713537d)
+	]
+	dispinterface _IATLControlEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(084dd667-da57-44a4-b825-ee604af74238),
+		control
+	]
+	coclass ATLControl
+	{
+		[default] interface IATLControl;
+		[default, source] dispinterface _IATLControlEvents;
+	};
+};
+
